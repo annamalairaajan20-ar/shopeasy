@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEase - Your Online Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+
+      <div class="logo">ShopEase</div>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search products...">
+        <button class="search-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide slide1"><img src="banner 1" style="width: 50000px;"> </div>
+      <div class="slide slide2"><img src="banner2" style="width: 50000px;"></div>
+      <div class="slide slide3"><img src="banner3" style="width: 50000px;"></div>
+      <div class="slide slide4"><img src="banner4" style="width: 50000px;"></div>
+    </div>
+  </div>
+
+
+  <section class="products-section">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img">
+          <img src="watch" alt="Stylish Watch" style="width: 230px; height: 200px;">
+        </div>
+        <h3 class="product-title">Stylish Watch</h3>
+        <p class="product-price">₹2,999</p>
+        <button class="buy-btn" onclick="goToCart()">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><img src="phone" alt="Stylish Watch" style="width:  230px; height: 200px;"></div>
+        <h3 class="product-title">Smart Phone</h3>
+        <p class="product-price">₹15,999</p>
+        <button class="buy-btn" onclick="goToCart()">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><img src="bag" alt="Stylish Watch" style="width:  230px; height: 200px;"></div>
+        <h3 class="product-title">Laptop Bag</h3>
+        <p class="product-price">₹1,499</p>
+        <button class="buy-btn" onclick="goToCart()">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><img src="head" alt="Stylish Watch" style="width: 230px; height: 200px;"></div>
+        <h3 class="product-title">Headphones</h3>
+        <p class="product-price">₹3,499</p>
+        <button class="buy-btn" onclick="goToCart()">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>ShopEase</h3>
+        <p>Your one-stop destination for quality products at amazing prices. Shop with confidence and enjoy seamless
+          delivery.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="#667eea" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#667eea" stroke-width="2" />
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z" />
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#667eea" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Customer Service</h3>
+        <ul>
+          <li><a href="#shipping">Shipping Policy</a></li>
+          <li><a href="#returns">Returns & Exchanges</a></li>
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms & Conditions</a></li>
+          <li><a href="#track">Track Order</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Newsletter</h3>
+        <p>Subscribe to get special offers and updates!</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="payment-methods">
+          <span>💳 Visa</span>
+          <span>💳 MasterCard</span>
+          <span>📱 UPI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 ShopEase. All rights reserved. Made with ❤️ in India</p>
+    </div>
+  </footer>
+  <script>
+    function goToCart() {
+      window.location.href = 'cart.html';
+    }
+  </script>
+</body>
+
+</html>

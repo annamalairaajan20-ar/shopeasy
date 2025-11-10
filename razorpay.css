@@ -1,0 +1,440 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .page-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .order-summary {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .order-summary h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 1.2em;
+            color: #4a5568;
+        }
+
+        .order-item strong {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .total-amount {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #667eea;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .payment-methods {
+            margin-top: 30px;
+        }
+
+        .payment-methods h2 {
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            color: #2d3748;
+        }
+
+        .payment-option {
+            background: white;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .payment-option:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .payment-icon {
+            font-size: 3em;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-info {
+            flex: 1;
+        }
+
+        .payment-name {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .payment-desc {
+            font-size: 1.1em;
+            color: #718096;
+        }
+
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+        }
+
+        .back-button {
+            width: 100%;
+            padding: 18px;
+            background: white;
+            color: #667eea;
+            border: 3px solid #667eea;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Form Pages Styles */
+        .form-container {
+            padding: 40px;
+        }
+
+        .form-title {
+            font-size: 2em;
+            color: #2d3748;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .payment-info-box {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid #667eea;
+        }
+
+        .payment-info-box p {
+            font-size: 1.1em;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .success-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .success-title {
+            font-size: 2.5em;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .success-text {
+            font-size: 1.2em;
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        .order-id {
+            font-size: 1.3em;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .verification-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .verification-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .verification-content {
+            text-align: center;
+            color: white;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .verification-overlay.show .verification-content {
+            transform: scale(1);
+        }
+
+        .check-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .check-circle {
+            width: 150px;
+            height: 150px;
+            border: 8px solid #48bb78;
+            border-radius: 50%;
+            position: relative;
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        .verification-overlay.show .check-circle {
+            animation: scaleCircle 0.5s ease forwards;
+        }
+
+        @keyframes scaleCircle {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .check-mark {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            border-right: 8px solid #48bb78;
+            border-bottom: 8px solid #48bb78;
+            transform: rotate(45deg);
+            left: 50%;
+            top: 35%;
+            margin-left: -20px;
+            margin-top: -30px;
+            opacity: 0;
+        }
+
+        .verification-overlay.show .check-mark {
+            animation: drawCheck 0.5s ease 0.5s forwards;
+        }
+
+        @keyframes drawCheck {
+            0% {
+                height: 0;
+                width: 0;
+                opacity: 1;
+            }
+            50% {
+                height: 0;
+                width: 60px;
+                opacity: 1;
+            }
+            100% {
+                height: 100px;
+                width: 60px;
+                opacity: 1;
+            }
+        }
+
+        .verification-title {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            animation: slideUp 0.5s ease 1s forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .verification-subtitle {
+            font-size: 1.5em;
+            opacity: 0;
+            animation: slideUp 0.5s ease 1.2s forwards;
+            margin-bottom: 15px;
+        }
+
+        .verification-order-id {
+            font-size: 1.3em;
+            color: #48bb78;
+            font-weight: 600;
+            opacity: 0;
+            animation: slideUp 0.5s ease 1.4s forwards;
+            margin-bottom: 30px;
+        }
+
+        .verification-details {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 400px;
+            opacity: 0;
+            animation: slideUp 0.5s ease 1.6s forwards;
+        }
+
+        .verification-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .verification-item:last-child {
+            margin-bottom: 0;
+            padding-top: 15px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            font-weight: 700;
+            font-size: 1.4em;
+        }

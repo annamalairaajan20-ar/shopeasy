@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛒 Shopping Cart</h1>
+            <p><span id="itemCount">3</span> items in your cart</p>
+        </div>
+
+        <div class="cart-layout">
+            <div class="cart-items" id="cartItems">
+                <div class="cart-item" data-id="1" data-price="7999">
+                    <div class="item-image">
+                        <img src="head" style="height: 150px ;width: 150px;" alt="Apple Buds" />
+                    </div>
+                    <div class="item-details">
+                        <div class="item-name">Apple Buds</div>
+                        <div class="item-price">7999</div>
+                        <div class="quantity-control">
+                            <button class="quantity-btn decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn increase">+</button>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="remove-btn">Remove</button>
+                        <div class="item-total-price">7999</div>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-id="2" data-price="19999">
+                    <div class="item-image"> <img src="watch" style="height: 150px ;width: 150px;" alt="Apple Buds" />
+                    </div>
+                    <div class="item-details">
+                        <div class="item-name">Rolex 7 Edition</div>
+                        <div class="item-price">19999</div>
+                        <div class="quantity-control">
+                            <button class="quantity-btn decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn increase">+</button>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="remove-btn">Remove</button>
+                        <div class="item-total-price">19999</div>
+                    </div>
+                </div>
+
+                <div class="cart-item" data-id="3" data-price="4999">
+                    <div class="item-image"> <img src="bag" style="height: 150px ;width: 150px;" alt="Apple Buds" />
+                    </div>
+                    <div class="item-details">
+                        <div class="item-name">Safari Laptop Backpack</div>
+                        <div class="item-price">4999</div>
+                        <div class="quantity-control">
+                            <button class="quantity-btn decrease">-</button>
+                            <span class="quantity">2</span>
+                            <button class="quantity-btn increase">+</button>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="remove-btn">Remove</button>
+                        <div class="item-total-price">9998</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <h2 class="summary-title">Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">37996</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax (8%)</span>
+                    <span id="tax">3040</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span style="color: #4fffb0; font-weight: 600;">FREE</span>
+                </div>
+
+                <hr class="summary-divider">
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="total">41036</span>
+                </div>
+
+                <button class="checkout-btn">Proceed to Checkout</button>
+                <button class="continue-btn" onclick="window.location.href='address.html'">Continue Shopping</button>
+
+            </div>
+        </div>
+    </div>
+    <footer class="cart-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>ShopEase</h3>
+                <p>Your trusted shopping partner. Quality products, hassle-free returns, and secure payments.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                            <path
+                                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="#667eea" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#667eea" stroke-width="2" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Help & Support</h3>
+                <ul>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#shipping">Shipping Info</a></li>
+                    <li><a href="#returns">Returns Policy</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#track">Track Order</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Secure Shopping</h3>
+                <ul>
+                    <li>🔒 SSL Encrypted</li>
+                    <li>💳 Secure Payments</li>
+                    <li>🚚 Fast Delivery</li>
+                    <li>↩️ Easy Returns</li>
+                    <li>⭐ 100% Authentic</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>We Accept</h3>
+                <div class="payment-methods">
+                    <span>💳 Visa</span>
+                    <span>💳 Mastercard</span>
+                    <span>📱 UPI</span>
+                    <span>💰 COD</span>
+                </div>
+                <p style="margin-top: 15px; font-size: 14px;">Need help? Call: 1800-123-4567</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 ShopEase. All rights reserved. | <a href="#privacy">Privacy Policy</a> | <a
+                    href="#terms">Terms of Service</a></p>
+        </div>
+    </footer>
+    <script>
+        function updateCart() {
+            let subtotal = 0;
+            let itemCount = 0;
+
+            document.querySelectorAll('.cart-item').forEach(item => {
+                const price = parseFloat(item.dataset.price);
+                const quantity = parseInt(item.querySelector('.quantity').textContent);
+                const total = price * quantity;
+
+                item.querySelector('.item-total-price').textContent = total;
+                subtotal += total;
+                itemCount += quantity;
+            });
+
+            const tax = Math.round(subtotal * 0.08);
+            const total = subtotal + tax;
+
+            document.getElementById('subtotal').textContent = subtotal;
+            document.getElementById('tax').textContent = tax;
+            document.getElementById('total').textContent = total;
+            document.getElementById('itemCount').textContent = itemCount;
+        }
+
+        document.getElementById('cartItems').addEventListener('click', (e) => {
+            if (e.target.classList.contains('increase')) {
+                const item = e.target.closest('.cart-item');
+                const quantitySpan = item.querySelector('.quantity');
+                quantitySpan.textContent = parseInt(quantitySpan.textContent) + 1;
+                updateCart();
+            }
+
+            if (e.target.classList.contains('decrease')) {
+                const item = e.target.closest('.cart-item');
+                const quantitySpan = item.querySelector('.quantity');
+                const currentQty = parseInt(quantitySpan.textContent);
+                if (currentQty > 1) {
+                    quantitySpan.textContent = currentQty - 1;
+                    updateCart();
+                }
+            }
+
+            if (e.target.classList.contains('remove-btn')) {
+                const item = e.target.closest('.cart-item');
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-100%)';
+                setTimeout(() => {
+                    item.remove();
+                    updateCart();
+                }, 300);
+            }
+        });
+
+        updateCart();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <link rel="stylesheet" href="razorpay.css">
+</head>
+<body>
+    <!-- Main Payment Selection Page -->
+    <div class="page-container" id="mainPage">
+        <div class="header">
+            <h1>💳 Secure Payment</h1>
+            <p>Complete your purchase securely</p>
+        </div>
+
+        <div class="content">
+            <div class="order-summary">
+                <h2>📦 Order Summary</h2>
+                <div class="order-item">
+                    <span>Items:</span>
+                    <strong>3 Products</strong>
+                </div>
+                <div class="order-item">
+                    <span>Subtotal:</span>
+                    <strong>₹37,996.00</strong>
+                </div>
+                <div class="order-item">
+                    <span>Tax (8%):</span>
+                    <strong>₹3,039.68</strong>
+                </div>
+                <div class="order-item">
+                    <span>Shipping:</span>
+                    <strong style="color: #48bb78;">FREE</strong>
+                </div>
+                <div class="order-item total-amount">
+                    <span>Total Amount:</span>
+                    <span>₹41,035.68</span>
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <h2>Choose Payment Method</h2>
+
+                <div class="payment-option" onclick="showCODPage()">
+                    <div class="payment-icon">💵</div>
+                    <div class="payment-info">
+                        <div class="payment-name">Cash on Delivery</div>
+                        <div class="payment-desc">Pay when you receive the product</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </div>
+
+                <div class="payment-option" onclick="showRazorpayPage()">
+                    <div class="payment-icon">💳</div>
+                    <div class="payment-info">
+                        <div class="payment-name">Razorpay</div>
+                        <div class="payment-desc">Credit/Debit Card, Net Banking</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </div>
+
+                <div class="payment-option" onclick="showUPIPage()">
+                    <div class="payment-icon">🔗</div>
+                    <div class="payment-info">
+                        <div class="payment-name">UPI Payment</div>
+                        <div class="payment-desc">Pay using any UPI app</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </div>
+
+                <div class="payment-option" onclick="showGPayPage()">
+                    <div class="payment-icon">📱</div>
+                    <div class="payment-info">
+                        <div class="payment-name">Google Pay</div>
+                        <div class="payment-desc">Quick and secure UPI payment</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </div>
+
+                <div class="payment-option" onclick="showPhonePePage()">
+                    <div class="payment-icon">💜</div>
+                    <div class="payment-info">
+                        <div class="payment-name">PhonePe</div>
+                        <div class="payment-desc">Fast & secure digital payment</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </div>
+            </div>
+
+            <button class="back-button" onclick="window.history.back()">
+                ⬅ Back to Cart
+            </button>
+        </div>
+    </div>
+
+    <!-- Cash on Delivery Page -->
+    <div class="page-container hidden" id="codPage">
+        <div class="header">
+            <h1>💵 Cash on Delivery</h1>
+            <p>Fill in your delivery details</p>
+        </div>
+
+        <div class="form-container">
+            <div class="payment-info-box">
+                <p>💡 <strong>Note:</strong> Please keep exact amount ready. Delivery executive will collect ₹41,035.68 at the time of delivery.</p>
+            </div>
+
+            <form onsubmit="processCOD(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number *</label>
+                    <input type="tel" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Complete Delivery Address *</label>
+                    <textarea required rows="4" placeholder="House No., Street, Landmark"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>City *</label>
+                    <input type="text" required placeholder="Enter city">
+                </div>
+
+                <div class="form-group">
+                    <label>State *</label>
+                    <select required>
+                        <option value="">Select State</option>
+                        <option value="TN">Tamil Nadu</option>
+                        <option value="KL">Kerala</option>
+                        <option value="KA">Karnataka</option>
+                        <option value="AP">Andhra Pradesh</option>
+                        <option value="TG">Telangana</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>PIN Code *</label>
+                    <input type="text" required placeholder="6-digit PIN code" pattern="[0-9]{6}">
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    ✅ Confirm Cash on Delivery Order
+                </button>
+
+                <button type="button" class="back-button" onclick="backToMain()">
+                    ⬅ Back to Payment Options
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Razorpay Page -->
+    <div class="page-container hidden" id="razorpayPage">
+        <div class="header">
+            <h1>💳 Razorpay Payment</h1>
+            <p>Secure online payment gateway</p>
+        </div>
+
+        <div class="form-container">
+            <div class="payment-info-box">
+                <p>💳 <strong>Payment Methods Available:</strong></p>
+                <p>• Credit/Debit Cards (Visa, Mastercard, RuPay)</p>
+                <p>• Net Banking (All Major Banks)</p>
+                <p>• UPI & Wallets</p>
+                <p>• EMI Options Available</p>
+            </div>
+
+            <form onsubmit="processRazorpay(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="rzp-name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="rzp-email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number *</label>
+                    <input type="tel" id="rzp-phone" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
+                </div>
+
+                <div class="order-summary" style="margin-top: 20px;">
+                    <div class="order-item">
+                        <span>Amount to Pay:</span>
+                        <strong style="color: #667eea; font-size: 1.5em;">₹41,035.68</strong>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    💳 Proceed to Razorpay Payment
+                </button>
+
+                <button type="button" class="back-button" onclick="backToMain()">
+                    ⬅ Back to Payment Options
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- UPI Payment Page -->
+    <div class="page-container hidden" id="upiPage">
+        <div class="header">
+            <h1>🔗 UPI Payment</h1>
+            <p>Pay using any UPI app</p>
+        </div>
+
+        <div class="form-container">
+            <div class="payment-info-box">
+                <p>📱 <strong>How it works:</strong></p>
+                <p>1. Enter your UPI ID below</p>
+                <p>2. We'll send a payment request</p>
+                <p>3. Approve in your UPI app</p>
+                <p>4. Payment complete! ✅</p>
+            </div>
+
+            <form onsubmit="processUPI(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>UPI ID *</label>
+                    <input type="text" required placeholder="yourname@paytm / yourname@okaxis" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9]+">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number *</label>
+                    <input type="tel" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
+                </div>
+
+                <div class="order-summary" style="margin-top: 20px;">
+                    <div class="order-item">
+                        <span>Amount to Pay:</span>
+                        <strong style="color: #667eea; font-size: 1.5em;">₹41,036</strong>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    🔗 Send UPI Payment Request
+                </button>
+
+                <button type="button" class="back-button" onclick="backToMain()">
+                    ⬅ Back to Payment Options
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Google Pay Page -->
+    <div class="page-container hidden" id="gpayPage">
+        <div class="header">
+            <h1>📱 Google Pay</h1>
+            <p>Quick UPI payment via Google Pay</p>
+        </div>
+
+        <div class="form-container">
+            <div class="payment-info-box">
+                <p>📱 <strong>Payment via Google Pay:</strong></p>
+                <p>• Opens Google Pay app automatically</p>
+                <p>• Secure UPI payment</p>
+<p>• Instant confirmation</p>
+                <p>• No need to enter UPI ID</p>
+            </div>
+
+            <form onsubmit="processGPay(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number *</label>
+                    <input type="tel" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="order-summary" style="margin-top: 20px;">
+                    <div class="order-item">
+                        <span>Amount to Pay:</span>
+                        <strong style="color: #667eea; font-size: 1.5em;">₹41,036</strong>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    📱 Open Google Pay
+                </button>
+
+                <button type="button" class="back-button" onclick="backToMain()">
+                    ⬅ Back to Payment Options
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- PhonePe Page -->
+    <div class="page-container hidden" id="phonepePage">
+        <div class="header">
+            <h1>💜 PhonePe</h1>
+            <p>Fast & secure digital payment</p>
+        </div>
+
+        <div class="form-container">
+            <div class="payment-info-box">
+                <p>💜 <strong>Payment via PhonePe:</strong></p>
+                <p>• Opens PhonePe app automatically</p>
+                <p>• Secure UPI payment</p>
+                <p>• Quick & easy checkout</p>
+                <p>• Instant payment confirmation</p>
+            </div>
+
+            <form onsubmit="processPhonePe(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Mobile Number *</label>
+                    <input type="tel" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="order-summary" style="margin-top: 20px;">
+                    <div class="order-item">
+                        <span>Amount to Pay:</span>
+                        <strong style="color: #667eea; font-size: 1.5em;">₹41,036</strong>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    💜 Open PhonePe
+                </button>
+
+                <button type="button" class="back-button" onclick="backToMain()">
+                    ⬅ Back to Payment Options
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Page -->
+    <div class="page-container hidden" id="successPage">
+        <div class="header">
+            <h1>✅ Payment Successful</h1>
+            <p>Your order has been confirmed</p>
+        </div>
+
+        <div class="success-message">
+            <div class="success-icon">🎉</div>
+            <h2 class="success-title">Order Placed Successfully!</h2>
+            <p class="success-text">Thank you for your purchase</p>
+            <div class="order-id">Order ID: <span id="orderId"></span></div>
+            
+            <div class="order-summary" style="max-width: 400px; margin: 0 auto 30px;">
+                <div class="order-item">
+                    <span>Amount Paid:</span>
+                    <strong>₹41,035.68</strong>
+                </div>
+                <div class="order-item">
+                    <span>Payment Method:</span>
+                    <strong id="paymentMethod"></strong>
+                </div>
+            </div>
+
+            <button class="submit-btn" onclick="window.location.reload()">
+                🏠 Back to Home
+            </button>
+        </div>
+    </div>
+
+    <!-- Processing Overlay -->
+    <div class="processing-overlay" id="processingOverlay">
+        <div class="processing-content">
+            <div class="loader"></div>
+            <div class="processing-text">Processing Payment...</div>
+            <div class="processing-subtext">Please wait, confirming your order</div>
+        </div>
+    </div>
+
+    <!-- Verification Overlay -->
+    <div class="verification-overlay" id="verificationOverlay">
+        <div class="verification-content">
+            <div class="check-container">
+                <div class="check-circle">
+                    <div class="check-mark"></div>
+                </div>
+            </div>
+            <h1 class="verification-title">Your Order Was Confirmed!</h1>
+            <p class="verification-subtitle">Thank you for your purchase</p>
+            <div class="verification-order-id">Order ID: <span id="verifyOrderId"></span></div>
+            
+            <div class="verification-details">
+                <div class="verification-item">
+                    <span>Payment Method:</span>
+                    <strong id="verifyPaymentMethod"></strong>
+                </div>
+                <div class="verification-item">
+                    <span>Items:</span>
+                    <strong>3 Products</strong>
+                </div>
+                <div class="verification-item">
+                    <span>Total Amount:</span>
+                    <strong>₹41,035.68</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatIndianCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                minimumFractionDigits: 2
+            }).format(amount);
+        }
+
+        function showProcessing() {
+            document.getElementById('processingOverlay').classList.add('show');
+        }
+
+        function hideProcessing() {
+            document.getElementById('processingOverlay').classList.remove('show');
+        }
+
+        function showVerification(method) {
+            const orderId = generateOrderId();
+            document.getElementById('verifyOrderId').textContent = orderId;
+            document.getElementById('verifyPaymentMethod').textContent = method;
+            document.getElementById('verificationOverlay').classList.add('show');
+            
+            // Auto redirect to success page after animation
+            setTimeout(() => {
+                document.getElementById('verificationOverlay').classList.remove('show');
+                document.getElementById('orderId').textContent = orderId;
+                document.getElementById('paymentMethod').textContent = method;
+                showPage('successPage');
+            }, 4000);
+        }
+        function showPage(pageId) {
+            document.querySelectorAll('.page-container').forEach(page => {
+                page.classList.add('hidden');
+            });
+            document.getElementById(pageId).classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function backToMain() {
+            showPage('mainPage');
+        }
+
+        function showCODPage() {
+            showPage('codPage');
+        }
+
+        function showRazorpayPage() {
+            showPage('razorpayPage');
+        }
+
+        function showUPIPage() {
+            showPage('upiPage');
+        }
+
+        function showGPayPage() {
+            showPage('gpayPage');
+        }
+
+        function showPhonePePage() {
+            showPage('phonepePage');
+        }
+
+        function generateOrderId() {
+            return 'ORD' + Date.now() + Math.floor(Math.random() * 1000);
+        }
+
+        function showSuccess(method) {
+            // Removed - now using showVerification instead
+        }
+
+        function processCOD(event) {
+            event.preventDefault();
+            showProcessing();
+            
+            setTimeout(() => {
+                hideProcessing();
+                console.log('Cash on Delivery Order Placed');
+                showVerification('Cash on Delivery');
+            }, 2000);
+        }
+
+        function processRazorpay(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('rzp-name').value;
+            const email = document.getElementById('rzp-email').value;
+            const contact = document.getElementById('rzp-phone').value;
+
+            showProcessing();
+
+            const options = {
+                key: 'rzp_test_1234567890abcdef',
+                amount: 4103568,
+                currency: 'INR',
+                name: 'My Shopping Store',
+                description: 'Purchase Payment',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Razorpay_logo.svg',
+                handler: function(response) {
+                    hideProcessing();
+                    console.log('Razorpay Payment Success:', response.razorpay_payment_id);
+                    showVerification('Razorpay - ' + response.razorpay_payment_id);
+                },
+                prefill: {
+                    name: name,
+                    email: email,
+                    contact: contact
+                },
+                notes: {
+                    address: 'Online Shopping Cart'
+                },
+                theme: {
+                    color: '#3399cc'
+                },
+                modal: {
+                    ondismiss: function() {
+                        hideProcessing();
+                    }
+                }
+            };
+
+            setTimeout(() => {
+                hideProcessing();
+                const rzp = new Razorpay(options);
+                rzp.on('payment.failed', function(response) {
+                    alert('❌ Payment failed! Please try again.');
+                    console.error('Payment Error:', response.error);
+                });
+                rzp.open();
+            }, 1000);
+        }
+
+        function processUPI(event) {
+            event.preventDefault();
+            showProcessing();
+            
+            setTimeout(() => {
+                hideProcessing();
+                console.log('UPI Payment Processed');
+                if(confirm('Have you completed the UPI payment? Click OK to confirm.')) {
+                    showVerification('UPI Payment');
+                }
+            }, 2000);
+        }
+
+        function processGPay(event) {
+            event.preventDefault();
+            showProcessing();
+            
+            const upiId = 'yourstore@upi';
+            const amount = '41035.68';
+            const gpayUrl = `upi://pay?pa=${upiId}&pn=MyShoppingStore&am=${amount}&cu=INR&tn=ShoppingCartPayment`;
+            
+            setTimeout(() => {
+                hideProcessing();
+                console.log('Opening Google Pay...');
+                window.location.href = gpayUrl;
+                
+                setTimeout(() => {
+                    if(confirm('Have you completed the payment in Google Pay? Click OK to confirm.')) {
+                        showVerification('Google Pay');
+                    }
+                }, 3000);
+            }, 1500);
+        }
+
+        function processPhonePe(event) {
+            event.preventDefault();
+            showProcessing();
+            
+            const upiId = 'yourstore@upi';
+            const amount = '41035.68';
+            const phonepeUrl = `phonepe://pay?pa=${upiId}&pn=MyShoppingStore&am=${amount}&cu=INR&tn=ShoppingCartPayment`;
+            
+            setTimeout(() => {
+                hideProcessing();
+                console.log('Opening PhonePe...');
+                window.location.href = phonepeUrl;
+                
+                setTimeout(() => {
+                    if(confirm('Have you completed the payment in PhonePe? Click OK to confirm.')) {
+                        showVerification('PhonePe');
+                    }
+                }, 3000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
